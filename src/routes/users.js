@@ -133,7 +133,7 @@ function getReversePoints(board,player,i,j){
             mi--;
         }
         if(mi>=0 && board[mi][mj] == player && mupts.length>0){
-            allReversePoints=mupts.slice();
+            allReversePoints=copiarvector (mupts);
         }
 
 
@@ -146,7 +146,7 @@ function getReversePoints(board,player,i,j){
             mi++;
         }
         if(mi<=7 && board[mi][mj] == player && mdpts.length>0){
-            allReversePoints=mdpts.slice();
+            allReversePoints=copiarvector (mdpts);
         }
 
         //move left
@@ -158,7 +158,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mj>=0 && board[mi][mj] == player && mlpts.length>0){
-            allReversePoints=mlpts.slice();
+            allReversePoints=copiarvector (mlpts);
         }
 
         //move right
@@ -170,7 +170,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mj<=7 && board[mi][mj] == player && mrpts.length>0){
-            allReversePoints=mrpts.slice();
+            allReversePoints=copiarvector (mrpts);
         }
 
         //move up left
@@ -183,7 +183,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mi>=0 && mj>=0 && board[mi][mj] == player && mulpts.length>0){
-            allReversePoints=mulpts.slice();
+            allReversePoints=copiarvector (mulpts);
         }
 
         //move up right
@@ -196,7 +196,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mi>=0 && mj<=7 && board[mi][mj] == player && murpts.length>0){
-            allReversePoints=murpts.slice();
+            allReversePoints=copiarvector (murpts);
         }
 
         //move down left
@@ -209,7 +209,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mi<=7 && mj>=0 && board[mi][mj] == player && mdlpts.length>0){
-            allReversePoints=mdlpts.slice();
+            allReversePoints=copiarvector (mdlpts);
         }
 
         //move down right
@@ -222,7 +222,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mi<=7 && mj<=7 && board[mi][mj] == player && mdrpts.length>0){
-            allReversePoints=mdrpts.slice();
+            allReversePoints=copiarvector (mdrpts);
         }
 
         return allReversePoints;
@@ -367,7 +367,7 @@ function MMAB(node,player,depth,max,alpha,beta){
     }else{
         //minimizing
         score = Number.MAX_VALUE;
-        var posiciones=getAllPossibleMoves(node,player);
+        var posiciones=getAllPossibleMoves(node,oplayer);
         for(var iii=0;iii<posiciones.length; iii++){ //opponent turn
             //create new node
             var newNode = getNewBoardAfterMove(node,posiciones[iii],oplayer);
@@ -386,9 +386,10 @@ function solve(board, player,depth){
     
     nodesExplored = 0;
     var bestScore = Number.MIN_VALUE;
-    var bestMove = {x:0,y:0};
-    var posibleMoves=getAllPossibleMoves(board,player);
+    var bestMove = {x:-1,y:-1};
 
+    var posibleMoves=getAllPossibleMoves(board,player);
+    console.log(posibleMoves.length)
     for (var i = 0; i < posibleMoves.length; i++){
         var newNode = getNewBoardAfterMove(board,posibleMoves[i],player);
         
@@ -419,10 +420,9 @@ function readBoard(estado,turno){
         }
     }
     console.log(tablero);
-    var punto=solve(tablero,parseInt(turno, 10)+1,6);
+    var punto=solve(tablero,parseInt(turno, 10)+1,3);
     return "".concat(punto.x).concat(punto.y);
     
-
 }
 
 
