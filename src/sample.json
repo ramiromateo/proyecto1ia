@@ -1,0 +1,22 @@
+[
+    {
+        "id_usuario":"1",
+        "nombre_usuario":"Susel_Retana",
+        "contrasenia":"Susel1!",
+        "nombres":"Susel Eugenia",
+        "apellidos":"Retana Arriola",
+        "telefono":41538434,
+        "direccion":"Guatemala,Villa Nueva",
+        "tipo_usuario_id_tipo":1
+    },
+    {
+        "id_usuario":"2",
+        "nombre_usuario":"Sebastian_Retana",
+        "contrasenia":"Sebastian1!",
+        "nombres":"Mynor Sebastian",
+        "apellidos":"Retana Arriola",
+        "telefono":58780116,
+        "direccion":"Guatemala,Villa Nueva",
+        "tipo_usuario_id_tipo":1
+    }
+]
