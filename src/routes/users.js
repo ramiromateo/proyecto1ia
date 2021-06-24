@@ -420,7 +420,7 @@ function readBoard(estado,turno){
         }
     }
     console.log(tablero);
-    var punto=solve(tablero,parseInt(turno, 10)+1,3);
+    var punto=solve(tablero,parseInt(turno, 10)+1,1);
     return "".concat(punto.x).concat(punto.y);
     
 }
