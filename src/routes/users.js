@@ -427,13 +427,14 @@ function readBoard(estado,turno){
 
 
 //Get all Users
-router.get('/get-value',(req,res)=>{
+router.get('/valor',(req,res)=>{
   const turno = req.query.turno;
   const estado=req.query.estado;
   
   const respuesta=readBoard(estado,turno);
-  res.send('24')
+  res.send(respuesta)
 });
 
 
 module.exports = router;
+//web: node index.js
