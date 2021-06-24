@@ -146,7 +146,7 @@ function getReversePoints(board,player,i,j){
             mi++;
         }
         if(mi<=7 && board[mi][mj] == player && mdpts.length>0){
-            allReversePoints=copiarvector (mdpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mdpts));
         }
 
         //move left
@@ -158,7 +158,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mj>=0 && board[mi][mj] == player && mlpts.length>0){
-            allReversePoints=copiarvector (mlpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mlpts));
         }
 
         //move right
@@ -170,7 +170,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mj<=7 && board[mi][mj] == player && mrpts.length>0){
-            allReversePoints=copiarvector (mrpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mrpts));
         }
 
         //move up left
@@ -183,7 +183,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mi>=0 && mj>=0 && board[mi][mj] == player && mulpts.length>0){
-            allReversePoints=copiarvector (mulpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mulpts));
         }
 
         //move up right
@@ -196,7 +196,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mi>=0 && mj<=7 && board[mi][mj] == player && murpts.length>0){
-            allReversePoints=copiarvector (murpts);
+            allReversePoints=allReversePoints.concat(copiarvector (murpts));
         }
 
         //move down left
@@ -209,7 +209,7 @@ function getReversePoints(board,player,i,j){
             mj--;
         }
         if(mi<=7 && mj>=0 && board[mi][mj] == player && mdlpts.length>0){
-            allReversePoints=copiarvector (mdlpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mdlpts));
         }
 
         //move down right
@@ -222,7 +222,7 @@ function getReversePoints(board,player,i,j){
             mj++;
         }
         if(mi<=7 && mj<=7 && board[mi][mj] == player && mdrpts.length>0){
-            allReversePoints=copiarvector (mdrpts);
+            allReversePoints=allReversePoints.concat(copiarvector (mdrpts));
         }
 
         return allReversePoints;
