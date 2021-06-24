@@ -334,19 +334,19 @@ function eval(board , player){
             return 1000*evalCorner(board,player) + 100*evalMobility(board,player) + 500*evalDiscDiff(board, player) + 500*evalParity(board);
     }
 }
-    //returns minimax value for a given node with A/B pruning
+    
 function MMAB(node,player,depth,max,alpha,beta){
     nodesExplored++;
-    //if terminal reached or depth limit reached evaluate
+    
     if(depth == 0 || isGameFinished(node)){
-        //BoardPrinter bpe = new BoardPrinter(node,"Depth : " + depth);
+        
         return eval(node,player);
     }
-     //------------------------------------------------------------------    
+     
     var oplayer = (player==1) ? 2 : 1;
-    //if no moves available then forfeit turn
+    
     if((max && !hasAnyMoves(node,player)) || (!max && !hasAnyMoves(node,oplayer))){
-        //System.out.println("Forfeit State Reached !");
+        
         return MMAB(node,player,depth-1,!max,alpha,beta);
     }
     var score;
@@ -355,26 +355,26 @@ function MMAB(node,player,depth,max,alpha,beta){
         score = Number.MIN_VALUE;
         var posiciones=getAllPossibleMoves(node,player);
         for(var iii=0;iii<posiciones.length; iii++){ //my turn
-            //create new node
+            
             var newNode = getNewBoardAfterMove(node,posiciones[iii],player);
-            //recursive call
+            
             var childScore = MMAB(newNode,player,depth-1,false,alpha,beta);
             if(childScore > score) score = childScore;
-            //update alpha
+            
             if(score > alpha) alpha = score;
             if(beta <= alpha) break; //Beta Cutoff
         }
     }else{
-        //minimizing
+        
         score = Number.MAX_VALUE;
         var posiciones=getAllPossibleMoves(node,oplayer);
         for(var iii=0;iii<posiciones.length; iii++){ //opponent turn
-            //create new node
+        
             var newNode = getNewBoardAfterMove(node,posiciones[iii],oplayer);
-            //recursive call
+        
             var childScore = MMAB(newNode,player,depth-1,true,alpha,beta);
             if(childScore < score) score = childScore;
-            //update beta
+        
             if(score < beta) beta = score;
             if(beta <= alpha) break; //Alpha Cutoff
         }
@@ -419,8 +419,10 @@ function readBoard(estado,turno){
             tablero[i][j]=((parseInt(estado.charAt(i*8+j), 10) == 2) ? 0 :parseInt(estado.charAt(i*8+j), 10) + 1) ;
         }
     }
+    var ocupados=1+Math.round((64-getTotalStoneCount(board))/8);
+
     console.log(tablero);
-    var punto=solve(tablero,parseInt(turno, 10)+1,1);
+    var punto=solve(tablero,parseInt(turno, 10)+1,ocupados);
     return "".concat(punto.x).concat(punto.y);
     
 }
