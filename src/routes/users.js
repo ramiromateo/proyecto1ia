@@ -419,7 +419,7 @@ function readBoard(estado,turno){
             tablero[i][j]=((parseInt(estado.charAt(i*8+j), 10) == 2) ? 0 :parseInt(estado.charAt(i*8+j), 10) + 1) ;
         }
     }
-    var ocupados=1+Math.round((64-getTotalStoneCount(tablero))/8);
+    var ocupados=Math.round((64-getTotalStoneCount(tablero))/8)-2;
 
     console.log(tablero);
     var punto=solve(tablero,parseInt(turno, 10)+1,ocupados);
