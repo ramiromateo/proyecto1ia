@@ -399,8 +399,8 @@ function solve(board, player,depth){
             bestMove = posibleMoves[i];
         }
     }
-    
-    return (bestMove.x==-1)?posibleMoves[0]:bestMove;
+    var toreturns=(bestMove.x==-1)?posibleMoves[0]:bestMove;
+    return toreturns
 }
 function readBoard(estado,turno){
     var tablero = [
@@ -423,7 +423,7 @@ function readBoard(estado,turno){
 
     console.log(tablero);
     var punto=solve(tablero,parseInt(turno, 10)+1,5);
-    return "".concat(punto.x).concat(punto.y);
+    return (punto==undefined)?"":"".concat(punto.x).concat(punto.y);
     
 }
 
