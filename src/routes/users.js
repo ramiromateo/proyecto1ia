@@ -400,7 +400,7 @@ function solve(board, player,depth){
         }
     }
     
-    return bestMove;
+    return (bestMove.x==-1)?posibleMoves[0]:bestMove;
 }
 function readBoard(estado,turno){
     var tablero = [
